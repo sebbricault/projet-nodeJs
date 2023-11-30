@@ -3,10 +3,12 @@ const express = require("express");
 const favicon = require("serve-favicon");
 const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3306;
+
 app.use(bodyParser.json());
-app.use(favicon(__dirname + "/favicon.ico"));
+app.use(favicon(__dirname + "/favicon.ico")).use(cors());
 // use(morgan("dev"));
 sequelize.initDb();
 // ici, nous placerons futurs point de terminaison
